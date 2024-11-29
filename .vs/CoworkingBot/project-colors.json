@@ -1,0 +1,31 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "b881726b-623b-4b6e-9a61-1ebc326f25c6": {
+      "ProjectGuid": "b881726b-623b-4b6e-9a61-1ebc326f25c6",
+      "DisplayName": "CoworkingBot",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "8820bdc4-bc3d-49b0-9017-1cef2cb05975": {
+      "ProjectGuid": "8820bdc4-bc3d-49b0-9017-1cef2cb05975",
+      "DisplayName": "CoworkingBot",
+      "ColorIndex": 1
+    },
+    "4c64d3bd-32ea-4e5c-b0a9-bc0b56fa4a9d": {
+      "ProjectGuid": "4c64d3bd-32ea-4e5c-b0a9-bc0b56fa4a9d",
+      "DisplayName": "CoworkingBot",
+      "ColorIndex": 2
+    },
+    "f21acc3b-7104-4194-859d-ea4bf5226f71": {
+      "ProjectGuid": "f21acc3b-7104-4194-859d-ea4bf5226f71",
+      "DisplayName": "CoworkingBot",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}

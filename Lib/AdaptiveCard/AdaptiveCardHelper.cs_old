@@ -1,0 +1,77 @@
+﻿using System.Collections;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using WorksPad.Assistant.Bot.Protocol.BotServer;
+using WorksPad.Assistant.Bot;
+using System.Net.Http;
+using System.Text.Json;
+using System.Text;
+using System.Threading.Tasks;
+using Bot.Models;
+using Bot.Lib;
+using System.Text.RegularExpressions;
+using Serilog;
+
+namespace Bot.Lib.AdaptiveCard
+{
+    public class AdaptiveCardHelper
+    {
+        public static Attachment CreateUpdateAttachment(string template_name, JObject dataContent = null)
+        {
+            var weekTemplateFilePath = Path.Combine("Lib/AdaptiveCard/Templates", template_name);
+            var template = File.ReadAllText(weekTemplateFilePath);
+            var cardContentAsString = template.ToString();
+            JObject cardContent = new JObject();
+            switch (template_name)
+            {
+                case "ProcessingTemplate.json":
+                    cardContent = CreateProcessingAttachment(cardContentAsString);
+                    break;
+                case "MainInputTemplate.json":
+                    cardContent = CreateCommandProcessingAttachment(cardContentAsString, dataContent);
+                    break;
+                case "InputCommandInfo.json":
+                    cardContent = CreateCommandInfoAttachment(cardContentAsString, dataContent);
+                    break;
+                default:
+                    //Create Template for "template not found"
+                    break;
+            }
+            return Attachment.CreateAdaptiveCardAttachment(cardContent);
+        }
+
+        private static string CreateCommandProcessingAttachment(string cardContentAsString, JObject dataContent)
+        {
+            JObject cardContent;
+            if (dataContent != null)
+            {
+                cardContent = JObject.Parse(cardContentAsString);
+                if (dataContent["InputCommand"] != null )
+                {
+                    //cardContent["body"][6]["columns"][0]["items"][0]["value"] = dataContent["InputCommand"].ToString();
+                }
+                if(dataContent["Warning"] != null)
+                {
+                    //cardContent["body"][8]["items"][0]["text"] = dataContent["Warning"]?.ToString();
+                    //cardContent["body"][8]["isVisible"] = true;
+                }
+            }
+            else {cardContent = JObject.Parse(cardContentAsString);}
+            return cardContent;
+        }
+
+        private static JObject CreateCommandInfoAttachment(string cardContentAsString, JObject dataContent)
+        {
+            JObject cardContent;
+            cardContentAsString = cardContentAsString.Replace("{Command}", dataContent["InputCommand"]["CompanyName"].ToString());
+            cardContent = JObject.Parse(cardContentAsString);
+            return cardContent;
+        }
+
+        private static JObject CreateProcessingAttachment(string cardContentAsString)
+        {
+            var cardContent = JObject.Parse(cardContentAsString);
+            return cardContent;
+        }
+    }
+}
