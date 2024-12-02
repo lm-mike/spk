@@ -115,7 +115,6 @@ namespace Bot.Lib
             }
             else
             {
-                //string SqlStringConnect = "Server=62.33.243.75;Database=SPK;User Id=wp_admin;Password=wp_admin_pass@;";
                 var connectionString = new SqlConnectionStringBuilder
                 {
                     DataSource = "", //paste destination point info here
