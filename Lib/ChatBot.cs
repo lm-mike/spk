@@ -118,10 +118,10 @@ namespace Bot.Lib
                 //string SqlStringConnect = "Server=62.33.243.75;Database=SPK;User Id=wp_admin;Password=wp_admin_pass@;";
                 var connectionString = new SqlConnectionStringBuilder
                 {
-                    DataSource = "62.33.243.75",
-                    UserID = "wp_admin",
-                    Password = "wp_admin_pass@",
-                    InitialCatalog = "SPK",
+                    DataSource = "", //paste destination point info here
+                    UserID = "", //paste username info here
+                    Password = "", //paste password here
+                    InitialCatalog = "", //paste DB name here
                     Encrypt = true,
                     TrustServerCertificate = true,
                 };
